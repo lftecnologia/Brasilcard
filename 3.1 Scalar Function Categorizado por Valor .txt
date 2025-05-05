@@ -1,0 +1,17 @@
+CREATE FUNCTION fn_CategoriaTransacao(@Valor DECIMAL(18,2))
+RETURNS VARCHAR(20)
+AS
+BEGIN
+    DECLARE @Categoria VARCHAR(20)
+
+    IF @Valor > 2000
+        SET @Categoria = 'Premium'
+    ELSE IF @Valor BETWEEN 1000 AND 2000
+        SET @Categoria = 'Alta'
+    ELSE IF @Valor BETWEEN 500 AND 999.99
+        SET @Categoria = 'Média'
+    ELSE
+        SET @Categoria = 'Baixa'
+
+    RETURN @Categoria
+END
