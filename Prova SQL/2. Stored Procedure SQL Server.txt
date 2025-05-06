@@ -1,0 +1,19 @@
+CREATE OR ALTER PROCEDURE sp_TotalTransacoesPeriodo
+    @Data_Inicial DATETIME,
+    @Data_Final DATETIME,
+    @Status_Transacao VARCHAR(50)
+AS
+BEGIN
+    SET NOCOUNT ON;
+
+    SELECT 
+        Numero_Cartao,
+        SUM(Valor_Transacao) AS Valor_Total,
+        COUNT(*) AS Quantidade_Transacoes,
+        Status_Transacao
+    FROM Transacoes
+    WHERE Data_Transacao BETWEEN @Data_Inicial AND @Data_Final
+      AND Status_Transacao = @Status_Transacao
+    GROUP BY Numero_Cartao, Status_Transacao
+    ORDER BY Numero_Cartao
+END
