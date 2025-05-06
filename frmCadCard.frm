@@ -24,7 +24,7 @@ Begin VB.Form frmCard
       _ExtentX        =   2566
       _ExtentY        =   661
       _Version        =   393216
-      Format          =   85524481
+      Format          =   147914753
       CurrentDate     =   45782
    End
    Begin VB.ComboBox cmbStatus 
@@ -328,7 +328,9 @@ Private Sub TwTitleBar_BarClose()
 End Sub
 
 Private Sub tlbMenu_ButtonClick(ByVal Button As MSComctlLib.Button)
-   'On Error GoTo Trata
+   Dim Status As String
+   
+   On Error GoTo Trata
    
    Select Case Button.Index
     Case 1 'novo
@@ -341,8 +343,8 @@ Private Sub tlbMenu_ButtonClick(ByVal Button As MSComctlLib.Button)
     
     Case 3 'grava
          oCadPad.codigo = CDbl(0 & txtID.text)
-         
-         If CZ(oCadPad.codigo) > 0 And cmbStatus.text = "Aprovada" Then
+         Status = DbService.GetUniqueValue("Select Status_Transacao From Transacoes WHERE id_transacao=" & txtID)
+         If CZ(oCadPad.codigo) > 0 And Status = "Aprovada" Then
             MsgBox "Transações com status de 'Aprovada' não podem ser editadas!", vbInformation, "Atenção!"
          ElseIf cmbStatus.text <> "Aprovada" And cmbStatus.text <> "Cancelada" And cmbStatus.text <> "Pendente" Then
             MsgBox "Selecione um status válido, 'Aprovada', 'Pendente' ou 'Cancelada'", vbInformation, "Atenção!"

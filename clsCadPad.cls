@@ -89,7 +89,7 @@ Public Property Let Empresa(ByVal PMT As Boolean)
    bEmpresa = PMT
 End Property
 
-Public Property Let Condicao(ByVal PMT As String)
+Public Property Let condicao(ByVal PMT As String)
    sCondicao = PMT
 End Property
 
@@ -165,7 +165,7 @@ Public Function Exclui(ID, Optional bPergunta As Boolean = False, Optional Conex
     On Error GoTo erro
     
     Set DbService = New cDBService
-
+      
     If Trim$(CStr(ID)) = "" Then
         MsgBox "Nenhum registro foi selecionado!", vbExclamation, "Exclusão não realizada!"
         Exit Function

@@ -40,7 +40,7 @@ Function trataErros(idErr As Double) As Boolean
                MsgBox "Arquivo não Encontrado!", vbInformation, "Atenção!"
                
           Case Else
-               MsgBox "Erro inesperado!" & Chr(13) & Err.Description, 16, "Erro Ocorrido!"
+               MsgBox "Erro não reportado, chame o supervisor do sistema!" & Chr(13) & Err.Description, 16, "Erro Ocorrido!"
    End Select
 End Function
 

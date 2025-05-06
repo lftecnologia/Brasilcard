@@ -16,4 +16,5 @@ como um campo inteiro. exemplo 0,1,2 o que daria um desempenho melhor;
 da tela de consulta, como largura das colunas, formato, largura do form, qual coluna será a principal quando o form for aberto, etc. Foi implementada com top 400 (o que pode ser ajustado) para evitar gargalos de desempenho.
 9A. A consulta considera os tipos dos campos (sql server) para formatar a string sql interna
 para criar os filtros.
-10. Criei Classes e módulos básicos para demonstrar uma modularidade e um modelo de crescimento;
+9B. Ao dar duplo clique na linha da consulta os dados são transportados para a edição;
+10. Criei Classes e módulos básicos para demonstrar uma modularidade e um modelo de crescimento.
